@@ -1,0 +1,6 @@
+[book]
+authors = ["staticf0x"]
+language = "en"
+multilingual = false
+src = "src"
+title = "MintMaker Documentation"
