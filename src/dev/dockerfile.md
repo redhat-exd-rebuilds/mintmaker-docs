@@ -3,7 +3,7 @@
 MintMaker's [Dockerfile](https://github.com/konflux-ci/mintmaker-renovate-image/blob/main/Dockerfile)
 is built from [ubi9-minimal](https://catalog.redhat.com/software/containers/ubi9-minimal/61832888c0d15aff4912fe0d).
 
-The Docker image has to provide the following as a bare minimum:
+The container image has to provide the following as a bare minimum:
 
 - `renovate` executable
     - `node` and `npm` executables to be able to build Renovate from source
