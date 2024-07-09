@@ -22,7 +22,7 @@ this guide.
 ### Steps
 
 - Determine the Konflux component you want to off-boarding from Mintmaker.
-- Use the `kubectl` or `oc` command to add the annotation `mintmaker.appstudio.redhat.com/disabled=true` to the your component.
+- Use the `kubectl` or `oc` command to add the annotation `mintmaker.appstudio.redhat.com/disabled: "true"` to the component.
 
 Example:
 
