@@ -15,3 +15,7 @@ lockfile.
 ## Docker
 
 - [dockerfile](https://docs.renovatebot.com/modules/manager/dockerfile/)
+
+## Git Submodules
+
+- [git-submodules](https://docs.renovatebot.com/modules/manager/git-submodules/)
