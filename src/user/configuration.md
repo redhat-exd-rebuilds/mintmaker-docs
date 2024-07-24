@@ -1,6 +1,6 @@
 # Configuration
 
-The base configuration can be found [here](https://github.com/redhat-appstudio/infra-deployments/blob/main/components/mintmaker/base/renovate-config.yaml). This config file
+The base configuration can be found [here](https://github.com/konflux-ci/mintmaker/blob/main/config/renovate/renovate.json). This config file
 is applied to all repositories onboarded in Konflux.
 
 Individual repositories can override this config to tweak

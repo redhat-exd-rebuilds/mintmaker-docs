@@ -4,7 +4,7 @@
 
 - [MintMaker Konflux controller](https://github.com/konflux-ci/mintmaker)
 - [MintMaker container image](https://github.com/konflux-ci/mintmaker-renovate-image)
-- [MintMaker default config](https://github.com/redhat-appstudio/infra-deployments/blob/main/components/mintmaker/base/renovate-config.yaml)
+- [MintMaker default config](https://github.com/konflux-ci/mintmaker/blob/main/config/renovate/renovate.json)
 
 ## RPM lockfile support
 
