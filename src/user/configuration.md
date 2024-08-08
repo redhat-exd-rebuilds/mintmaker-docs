@@ -33,3 +33,16 @@ oc -n <namespace> annotate component/<component-name> mintmaker.appstudio.redhat
 > **NOTE**: namespace name is different with your workspace name, for example,
   if your workspace name is `myworkspace`, then the namespace name should be 
   `myworkspace-tenant`.
+
+## How to stop PRs/MRs from being updated outside of schedule
+
+If you set up a schedule for your repo via the [`schedule`](https://docs.renovatebot.com/configuration-options/#schedule) config, and still see MintMaker updating MRs/PRs outside of the allowed times, you might need to try a different config.
+
+The `schedule` config manages branch creation, and it will not restrain updates to MRs/PRs from branches that are already created. This is because that is a flow of an already-existing branch. 
+
+There is another configuration called [`updateNotScheduled`](https://docs.renovatebot.com/configuration-options/#updatenotscheduled), which when set to `false` will disallow for updates in existing MRs/PRs outside of the schedule:
+```json
+        "updateNotScheduled": false
+```
+
+The default value of `updateNotScheduled` is `true`, which leads to this behavior that might seem unexpected at first.
