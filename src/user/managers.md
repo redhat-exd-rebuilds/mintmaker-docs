@@ -16,6 +16,13 @@ lockfile.
 
 - [dockerfile](https://docs.renovatebot.com/modules/manager/dockerfile/)
 
-## Git Submodules
+## Git
 
 - [git-submodules](https://docs.renovatebot.com/modules/manager/git-submodules/)
+
+## Custom
+
+Adds ability to create a custom manager by configuring `customManagers` section
+in your `renovate.json` file.
+
+- [regex](https://docs.renovatebot.com/modules/manager/regex/)
