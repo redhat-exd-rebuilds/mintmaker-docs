@@ -38,3 +38,75 @@ There is another configuration called [`updateNotScheduled`](https://docs.renova
 ```
 
 The default value of `updateNotScheduled` is `true`, which leads to this behavior that might seem unexpected at first.
+
+## Automerge
+
+It is possible to configure Renovate to merge updates automatically for specific
+dependencies. You can find the documentation on this topic [here](https://docs.renovatebot.com/key-concepts/automerge/).
+
+When set in a given PR/MR, an automerge will happen provided two conditions are met:
+- the repositorie's CI pipeline ran successfully succeeds, and
+- the PR/MR branch is up-to-date with the base branch.
+
+Because of the need for the CI pipeline to succeed, you should expect that the
+merge will only happen in the next time mintmaker is run.
+
+This following timeline exemplifies the events leading to an automerge in a repository:
+
+  Time  | Event
+--- | --- 
+__[10:00am]__ | MintMaker run 1 starts 
+__[10:01am]__ | PR for dependency `xyz` in is filed
+__[10:02am]__ | CI pipeline is started
+__[10:05am]__ | CI pipeline finishes successfully
+__[10:10am]__ | MintMaker run 1 is finished
+... | ...
+__[11:00am]__ | MintMaker run 2 starts
+__[11:01am]__ | PR for dependency `xyz` is detected
+__[11:02am]__ | PR for dependency `xyz` is automerged
+
+
+Because of the need for the PR/MR branch being up-to-date with the base branch,
+automerging multiple branches at once does not work. 
+
+> **NOTE:** automerging can be risky. Since the merges will happen without anyone
+> looking at the code, they have a higher risk of introducing regression.
+>
+> It is _very important_ to have a good test coverage in place, to mitigate that 
+> risk.
+
+You can set automerge only for a certain type of updates. For example, updates
+to patch and minor updates of certain packages.
+
+For example, to enable automerge for non-major updates on all dependencies, you
+can add the following to `renovate.json`:
+```json
+{
+  "packageRules": [
+    {
+      "description": "Automerge non-major updates",
+      "matchUpdateTypes": ["minor", "patch"],
+      "automerge": true
+    }
+  ]
+}
+```
+alternatively, to enable non-major updates only for specific packages, you can use
+```json
+{
+  "packageRules": [
+    {
+      "description": "Automerge non-major updates on depA and depB",
+      "matchUpdateTypes": ["minor", "patch"],
+      "matchPackageNames": ["depA", "depB"],
+      "automerge": true
+    }
+  ]
+}
+```
+See Renovate's [docs](https://docs.renovatebot.com/key-concepts/automerge/#configuration-examples)
+on this topic on further examples. They show how to set automerge for specific
+dependency groups, types, etc.
+
+Finally, to check if automerge is cofigured for a given PR/MR, you can look for 
+the annotation "Automerge: Enabled" in the PR/MR body.
